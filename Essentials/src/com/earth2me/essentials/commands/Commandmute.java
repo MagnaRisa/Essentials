@@ -51,12 +51,13 @@ public class Commandmute extends EssentialsCommand {
 
             if (args.length > 1) {
                 final String time = getFinalArg(args, 1);
-                muteTimestamp = DateUtil.parseDateDiff(time, true);
                 String muteReason;
-                
+
                 try {
+                    muteTimestamp = DateUtil.parseDateDiff(time, true);
                     muteReason = DateUtil.removeTimePattern (time);
                 } catch (Exception e) {
+                    user.setMuted ((!user.getMuted ()));
                     muteReason = time;
                 }
 
